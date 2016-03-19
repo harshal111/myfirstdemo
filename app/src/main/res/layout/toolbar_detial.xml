@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    local:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
+
+
+    </android.support.v7.widget.Toolbar>-->
+
+
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/header_bg"
+    local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    <ImageView
+        android:id="@+id/imgBack"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:padding="@dimen/margin_5dp"
+        android:src="@drawable/arrows"
+        android:visibility="gone" />
+
+
+    <TextView
+        android:id="@+id/txt_header_titel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginRight="@dimen/margin_10dp"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="@color/color_gray"
+        android:textSize="@dimen/text_15"
+        android:textStyle="bold"
+        android:visibility="gone"
+
+        />
+
+
+    <RelativeLayout
+        android:id="@+id/relCart"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="@dimen/margin_10dp">
+
+
+        <ImageView
+            android:id="@+id/imgCart"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/alert" />
+
+        <TextView
+            android:id="@+id/lblNotification"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/oval_cart"
+            android:gravity="center"
+            android:text="10"
+            android:textColor="@android:color/white"
+            android:textSize="8dp"
+            android:visibility="visible" />
+
+
+    </RelativeLayout>
+
+
+</android.support.v7.widget.Toolbar>
+
+

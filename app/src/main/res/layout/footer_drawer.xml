@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/rel_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#3C3B3B"
+            android:padding="@dimen/margin_20dp"
+            android:layout_alignParentBottom="true"
+             android:gravity="bottom">
+
+            <TextView
+                android:id="@+id/txt_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/margin_10dp"
+                android:drawableTop="@drawable/tool"
+                android:text="SETTINGS"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/txt_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawablePadding="@dimen/margin_10dp"
+                android:drawableTop="@drawable/logout"
+                android:text="LOGOUT"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+
+
+
+
+</RelativeLayout>

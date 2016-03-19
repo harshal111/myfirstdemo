@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root"
+    android:background="@android:color/white">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_detial" />
+
+    <RelativeLayout
+        android:id="@+id/rel_tops"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/toolbar">
+
+
+
+        <RelativeLayout
+            android:id="@+id/rel_left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/rel_right"
+            android:layout_alignTop="@+id/rel_right"
+            android:layout_toLeftOf="@+id/rel_right"
+            android:background="#555554"
+            android:padding="@dimen/margin_10dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/txt_comp_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:singleLine="true"
+                android:layout_centerHorizontal="true"
+                android:text=""
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_16"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_comp_title"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:singleLine="true"
+                android:layout_centerHorizontal="true"
+                android:text="Time Allowed: 1.55 min"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_13"
+                android:textStyle="normal" />
+
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/lists"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_left"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="#ECECEC"
+            android:dividerHeight="2.0sp" />
+    </RelativeLayout>
+</RelativeLayout>

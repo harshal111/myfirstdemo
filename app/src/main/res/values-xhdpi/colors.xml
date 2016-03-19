@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4CAF50</color>
+    <color name="colorPrimaryDark">#388E3C</color>
+    <color name="colorAccent">#536DFE</color>
+    <color name="header_bg">#f6f6f6</color>
+    <color name="statusbarcolor">#4CAF50</color>
+    <color name="color_green">#58A464</color>
+    <color name="color_gray">#7F7F7F</color>
+
+
+
+    <color name="login_btn_bg">#266EBB</color>
+    <color name="footer_text_color">#5E5E5E</color>
+    <color name="black_light">#191919</color>
+    <color name="black_dark">#000000</color>
+
+    <color name="drawer_cat">#3E3E3E</color>
+    <color name="light_gray">#e5e5e5</color>
+
+    <color name="textfield_color">#7a7b7b</color>
+
+    <color name="comoon_color">#384047</color>
+    <color name="circle">#04b2de</color>
+    <color name="circle_text">#313131</color>
+    <color name="bottom_line">#0fa3c8</color>
+    <color name="drawer_top_bg">#2671b7</color>
+    <color name="sage">#ffffff</color>
+    <color name="trans">#000000</color>
+    <color name="tab_select">#6D6D6D</color>
+    <color name="tab_unselect">#9D9D9D</color>
+    <color name="counter_text_bg">#373737</color>
+    <color name="counter_text_color">#c5c4c4</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="list_active">#282827</color>
+    <color name="unit_color">#89B864</color>
+
+    <!-- New Version Color -->
+
+    <color name="sb__snack_bkgnd">#323232</color>
+    <color name="sb__transparent">#00000000</color>
+    <color name="sb__dim_white">#20FFFFFF</color>
+    <color name="sb__button_text_color">#FB6541</color>
+    <color name="ldrawer_color">#FFFFFF</color>
+    <color name="actionbar_color">#bf360c</color>
+    <color name="drawer_arrow_second_color">#303f9f</color>
+    <color name="material_blue_500">#5677fc</color>
+    <color name="material_blue_600">#4e6cef</color>
+    <color name="transparent">#00FFFFFF</color>
+
+    <color name="color_dash">#00CCFF</color>
+
+
+    <color name="light_st">#99F587</color>
+    <color name="dark_st">#509842</color>
+    <color name="light_med">#B4F8F5</color>
+    <color name="dark_med">#30B0AA</color>
+
+    <color name="textColorSecondry">#000000</color>
+    <color name="tabsScrollColor">@android:color/white</color>
+    <color name="red">#990000</color>
+    <color name="green">#009900</color>
+    <color name="blue">#000099</color>
+    <color name="orange">#FF9900</color>
+
+    <color name="translucent_black">#80000000</color>
+
+</resources>

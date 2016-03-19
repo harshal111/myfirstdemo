@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_detial" />
+
+    <ScrollView
+        android:id="@+id/scl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txt_submot"
+        android:layout_below="@+id/toolbar"
+        android:layout_margin="@dimen/margin_10dp">
+
+        <RelativeLayout
+            android:id="@+id/scl_rel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/ll_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <EditText
+                    android:id="@+id/edt_fname"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:hint="First name*"
+
+                    android:padding="@dimen/margin_10dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/text_15" />
+
+                <EditText
+                    android:id="@+id/edt_lname"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_5dp"
+                    android:layout_weight="50"
+                    android:hint="Last name*"
+
+                    android:padding="@dimen/margin_10dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/text_15" />
+
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/edt_address"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/ll_1"
+                android:layout_marginLeft="@dimen/margin_5dp"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:gravity="top"
+                android:hint="Address*"
+                android:padding="@dimen/margin_10dp"
+                android:textSize="@dimen/text_15" />
+
+            <LinearLayout
+                android:id="@+id/ll_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt_address"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <EditText
+                    android:id="@+id/edt_city"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:hint="City*"
+
+                    android:padding="@dimen/margin_10dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/text_15" />
+
+                <EditText
+                    android:id="@+id/edt_pincde"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_5dp"
+                    android:layout_weight="50"
+                    android:hint="Postal/Zip code*"
+
+                    android:padding="@dimen/margin_10dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/text_15" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_2"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <EditText
+                    android:id="@+id/edt_st"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:hint="State/Province *"
+
+                    android:padding="@dimen/margin_10dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/text_15" />
+
+                <EditText
+                    android:id="@+id/edt_coont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_5dp"
+                    android:layout_weight="50"
+                    android:hint="Country *"
+
+                    android:padding="@dimen/margin_10dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/text_15" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_3"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <EditText
+                    android:id="@+id/edt_ph"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:hint="Mobile no *"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="@dimen/margin_10dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/text_15" />
+
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/txt_submot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_selector"
+        android:gravity="center"
+        android:padding="@dimen/margin_10dp"
+        android:text="SUBMIT"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_15"
+        android:textStyle="bold" />
+</RelativeLayout>
