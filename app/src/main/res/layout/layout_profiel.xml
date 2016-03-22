@@ -27,33 +27,63 @@
                 android:orientation="horizontal"
                 android:weightSum="100">
 
-                <EditText
-                    android:id="@+id/edt_fname"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_edt_fname"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="50"
-                    android:hint="First name*"
+                    android:layout_weight="50">
 
-                    android:padding="@dimen/margin_10dp"
-                    android:singleLine="true"
-                    android:textSize="@dimen/text_15" />
+                    <EditText
+                        android:id="@+id/edt_fname"
+                        style="@style/Edittext"
+                        android:hint="First name *"
+                        android:inputType="textCapSentences"
+                        android:text=""
+                        android:textSize="@dimen/text_13" />
 
-                <EditText
-                    android:id="@+id/edt_lname"
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_edt_lname"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_5dp"
-                    android:layout_weight="50"
-                    android:hint="Last name*"
+                    android:layout_weight="50">
 
-                    android:padding="@dimen/margin_10dp"
-                    android:singleLine="true"
-                    android:textSize="@dimen/text_15" />
+                    <EditText
+                        android:id="@+id/edt_lname"
+                        style="@style/Edittext"
+                        android:hint="Last name *"
+                        android:inputType="textCapSentences"
+                        android:text=""
+                        android:textSize="@dimen/text_13" />
+
+                </android.support.design.widget.TextInputLayout>
+
 
             </LinearLayout>
 
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_edt_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_1"
+                android:layout_marginLeft="@dimen/margin_5dp"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:layout_weight="50">
 
-            <EditText
+                <EditText
+                    android:id="@+id/edt_address"
+                    style="@style/Edittext"
+                    android:layout_height="100dp"
+                    android:gravity="top"
+                    android:hint="Address *"
+                    android:text=""
+                    android:textSize="@dimen/text_13" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--<EditText
                 android:id="@+id/edt_address"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
@@ -63,18 +93,33 @@
                 android:gravity="top"
                 android:hint="Address*"
                 android:padding="@dimen/margin_10dp"
-                android:textSize="@dimen/text_15" />
+                android:textSize="@dimen/text_15" />-->
 
             <LinearLayout
                 android:id="@+id/ll_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/edt_address"
+                android:layout_below="@+id/input_layout_edt_address"
                 android:layout_marginTop="@dimen/margin_5dp"
                 android:orientation="horizontal"
                 android:weightSum="100">
 
-                <EditText
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_edt_city"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50">
+
+                    <EditText
+                        android:id="@+id/edt_city"
+                        style="@style/Edittext"
+                        android:hint="City *"
+                        android:inputType="textCapSentences"
+                        android:text=""
+                        android:textSize="@dimen/text_13" />
+
+                </android.support.design.widget.TextInputLayout>
+                <!--<EditText
                     android:id="@+id/edt_city"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -83,19 +128,34 @@
 
                     android:padding="@dimen/margin_10dp"
                     android:singleLine="true"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="@dimen/text_15" />-->
 
-                <EditText
-                    android:id="@+id/edt_pincde"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_edt_pincde"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_5dp"
-                    android:layout_weight="50"
-                    android:hint="Postal/Zip code*"
+                    android:layout_weight="50">
 
-                    android:padding="@dimen/margin_10dp"
-                    android:singleLine="true"
-                    android:textSize="@dimen/text_15" />
+                    <EditText
+                        android:id="@+id/edt_pincde"
+                        style="@style/Edittext"
+                        android:hint="Postal/Zip code *"
+                        android:inputType="textCapSentences"
+                        android:text=""
+                        android:textSize="@dimen/text_13" />
+
+                </android.support.design.widget.TextInputLayout>
+                <!--  <EditText
+                      android:id="@+id/edt_pincde"
+                      android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="@dimen/margin_5dp"
+                      android:layout_weight="50"
+                      android:hint="Postal/Zip code*"
+
+                      android:padding="@dimen/margin_10dp"
+                      android:singleLine="true"
+                      android:textSize="@dimen/text_15" />-->
 
             </LinearLayout>
 
@@ -108,28 +168,38 @@
                 android:orientation="horizontal"
                 android:weightSum="100">
 
-                <EditText
-                    android:id="@+id/edt_st"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_edt_st"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="50"
-                    android:hint="State/Province *"
+                    android:layout_weight="50">
 
-                    android:padding="@dimen/margin_10dp"
-                    android:singleLine="true"
-                    android:textSize="@dimen/text_15" />
+                    <EditText
+                        android:id="@+id/edt_st"
+                        style="@style/Edittext"
+                        android:hint="State/Province *"
+                        android:inputType="textCapSentences"
+                        android:text=""
+                        android:textSize="@dimen/text_13" />
 
-                <EditText
-                    android:id="@+id/edt_coont"
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_edt_cont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_5dp"
-                    android:layout_weight="50"
-                    android:hint="Country *"
+                    android:layout_weight="50">
 
-                    android:padding="@dimen/margin_10dp"
-                    android:singleLine="true"
-                    android:textSize="@dimen/text_15" />
+                    <EditText
+                        android:id="@+id/edt_coont"
+                        style="@style/Edittext"
+                        android:hint="Country *"
+                        android:inputType="textCapSentences"
+                        android:text=""
+                        android:textSize="@dimen/text_13" />
+
+                </android.support.design.widget.TextInputLayout>
+
 
             </LinearLayout>
 
@@ -142,17 +212,22 @@
                 android:orientation="horizontal"
                 android:weightSum="100">
 
-                <EditText
-                    android:id="@+id/edt_ph"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_edt_ph"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="50"
-                    android:hint="Mobile no *"
-                    android:inputType="number"
-                    android:maxLength="10"
-                    android:padding="@dimen/margin_10dp"
-                    android:singleLine="true"
-                    android:textSize="@dimen/text_15" />
+                    android:layout_weight="50">
+
+                    <EditText
+                        android:id="@+id/edt_ph"
+                        style="@style/Edittext"
+                        android:hint="Mobile no *"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:text=""
+                        android:textSize="@dimen/text_13" />
+
+                </android.support.design.widget.TextInputLayout>
 
 
             </LinearLayout>

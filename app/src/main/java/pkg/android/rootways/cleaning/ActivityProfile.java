@@ -31,6 +31,7 @@ public class ActivityProfile extends AppCompatActivity {
     EditText mEditTextCont;
     TextView mTextViewSave;
     Toolbar mToolbar;
+    AllMethods methods;
     ImageView mImageViewBack;
     TextView mTextViewHeaderTitle;
     DatabaseConnectionAPI mDatabaseConnectionAPI;
@@ -40,6 +41,7 @@ public class ActivityProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_profiel);
         mArrayListProfiles=new ArrayList<>();
+        methods=new AllMethods(ActivityProfile.this);
         mEditTextFnam = (EditText) findViewById(R.id.edt_fname);
         mEditTextLnam = (EditText) findViewById(R.id.edt_lname);
         mEditTextAddress = (EditText) findViewById(R.id.edt_address);
@@ -72,25 +74,67 @@ public class ActivityProfile extends AppCompatActivity {
             mEditTextCont.setText(mArrayListProfiles.get(0).getCountry());
             mEditTextSt.setText(mArrayListProfiles.get(0).getState());
             mEditTextZip.setText(mArrayListProfiles.get(0).getPin());
-            mEditTextPh.setText(mArrayListProfiles.get(0).getMobile());
+            mEditTextPh.setText(mArrayListProfiles.get(0).getMobile());;
 
         }
 
         mTextViewSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean isUpdate=mDatabaseConnectionAPI.updateProfile(1,mEditTextFnam.getText().toString(),mEditTextLnam.getText().toString(),
-                        mEditTextAddress.getText().toString(),mEditTextPh.getText().toString(),
-                        mEditTextCity.getText().toString(),mEditTextSt.getText().toString(),mEditTextCont.getText().toString(),mEditTextZip.getText().toString());
-                if(isUpdate==true)
+
+                if (mEditTextFnam.getText().toString().equalsIgnoreCase(""))
                 {
-                    Toast.makeText(ActivityProfile.this,"Profile updated successfully.",Toast.LENGTH_LONG).show();
+                    methods.ShowDialog(ActivityProfile.this, "", "Enter first name.", "OK");
+                }
+                else if (mEditTextLnam.getText().toString().equalsIgnoreCase(""))
+                {
+                    methods.ShowDialog(ActivityProfile.this,"","Enter last name.","OK");
+                }
+                else if (mEditTextAddress.getText().toString().equalsIgnoreCase(""))
+                {
+                    methods.ShowDialog(ActivityProfile.this,"","Enter address.","OK");
+                }
+                else if (mEditTextCity.getText().toString().equalsIgnoreCase(""))
+                {
+                    methods.ShowDialog(ActivityProfile.this,"","Enter city.","OK");
+                }
+                else if (mEditTextZip.getText().toString().equalsIgnoreCase(""))
+                {
+                    methods.ShowDialog(ActivityProfile.this,"","Enter postal/zipcode.","OK");
+                }
+                else  if (mEditTextSt.getText().toString().equalsIgnoreCase(""))
+                {
+                    methods.ShowDialog(ActivityProfile.this,"","Enter state.","OK");
+                }
+
+                else  if (mEditTextCont.getText().toString().equalsIgnoreCase(""))
+                {
+                    methods.ShowDialog(ActivityProfile.this,"","Enter country.","OK");
+                }
+                else  if (mEditTextPh.getText().toString().equalsIgnoreCase(""))
+                {
+                    methods.ShowDialog(ActivityProfile.this, "", "Enter phone number.", "OK");
+                }
+                else  if (mEditTextPh.getText().toString().length()<10)
+                {
+                    methods.ShowDialog(ActivityProfile.this,"","Enter phone number at least 10 digit.","OK");
                 }
                 else
                 {
-                    Toast.makeText(ActivityProfile.this,"Profile not updated successfully.",Toast.LENGTH_LONG).show();
+                    boolean isUpdate=mDatabaseConnectionAPI.updateProfile(1,mEditTextFnam.getText().toString(),mEditTextLnam.getText().toString(),
+                            mEditTextAddress.getText().toString(),mEditTextPh.getText().toString(),
+                            mEditTextCity.getText().toString(),mEditTextSt.getText().toString(),mEditTextCont.getText().toString(),mEditTextZip.getText().toString());
+                    if(isUpdate==true)
+                    {
+                        Toast.makeText(ActivityProfile.this,"Profile updated successfully.",Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(ActivityProfile.this,"Profile not updated successfully.",Toast.LENGTH_LONG).show();
 
+                    }
                 }
+
             }
         });
     }

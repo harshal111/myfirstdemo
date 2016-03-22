@@ -13,6 +13,7 @@ public class GetProfile {
     String pin;
     String mobile;
     String address;
+
     int prid;
 
     public int getPrid() {
