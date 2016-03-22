@@ -68,7 +68,7 @@ public class AllMethods {
 	{
 		String ss="";
 		Date date = null;
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
 //		format.setTimeZone(TimeZone.getTimeZone("etc/UTC"));
 		try {
 			date = format.parse(amout);
@@ -77,7 +77,7 @@ public class AllMethods {
 
 			e.printStackTrace();
 		}
-		SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat df = new SimpleDateFormat("MMM dd, yyyy");
 		ss= df.format(date);
 		System.out.println("String in   is: " + ss);
 		return ss;

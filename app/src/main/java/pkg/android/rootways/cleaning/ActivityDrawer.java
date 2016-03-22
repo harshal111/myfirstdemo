@@ -6,6 +6,8 @@ package pkg.android.rootways.cleaning;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -21,12 +23,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -34,9 +39,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Stack;
 
 import helper.DatabaseConnectionAPI;
@@ -52,6 +59,10 @@ public class ActivityDrawer extends AppCompatActivity {
     private Stack<Fragment> fragmentStack;
     private boolean drawerArrowColor;
     View mViewHeader;
+    private int pYear;
+    private int pMonth;
+    private int pDay;
+
     private View mHeaderView;
     //private View mToolbarView;
     //private ObservableScrollView mScrollView;
@@ -93,6 +104,14 @@ public class ActivityDrawer extends AppCompatActivity {
     TextView mTextViewUserName;
     TextView mTextViewProfileLink;
 
+    int month=0;
+    int year=0;
+    String mStringOptionMOnth="";
+    String StartDate="";
+    static final int DATE_DIALOG_ID = 0;
+    AllMethods methods;
+
+
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +126,7 @@ public class ActivityDrawer extends AppCompatActivity {
         ab.setTitle("");
         ab.setDisplayHomeAsUpEnabled(true);
         mActivity = this;
+        methods=new AllMethods(ActivityDrawer.this);
         ab.setHomeButtonEnabled(true);
         mArrayListCompanies = new ArrayList<>();
         mRelativeLayoutDrawer = (RelativeLayout) findViewById(R.id.left_drawer);
@@ -120,6 +140,10 @@ public class ActivityDrawer extends AppCompatActivity {
         mArrayList = new ArrayList<DrawerItems>();
         mTextViewUserName = (TextView) findViewById(R.id.txt_name);
         mTextViewProfileLink = (TextView) findViewById(R.id.txt_email);
+        final Calendar cal = Calendar.getInstance();
+        pYear = cal.get(Calendar.YEAR);
+        pMonth = cal.get(Calendar.MONTH);
+        pDay = cal.get(Calendar.DAY_OF_MONTH);
 
         mTextViewDate = (TextView) findViewById(R.id.txt_dates);
         mListView = (ListView) findViewById(R.id.listitems);
@@ -143,18 +167,180 @@ public class ActivityDrawer extends AppCompatActivity {
                 startActivity(mIntent);
             }
         });
+        mImageViewPrev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog(DATE_DIALOG_ID);
+            }
+        });
         mImageViewNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showDialog(DATE_DIALOG_ID);
+            }
+        });
+        mTextViewDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog(DATE_DIALOG_ID);
+            }
+        });
+/*
+        mImageViewNext.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                //if (mStringCurrentState.equalsIgnoreCase("Month")) {
+                    String StartDate = "";
+                    String mStringOptionMOnth = "";
+                     month++;
+                    System.out.println("Year " + year + "MOntrh " + month);
+                    System.out.println("month " + month);
+                    if (month == 13) {
+                        month = 1;
+                        mStringOptionMOnth = "January";
+                        year++;
+                        StartDate = String.valueOf(year) + "-0"
+                                + String.valueOf(month);
+                        mTextViewDate.setText(mStringOptionMOnth + " "
+                                + year);
+                    }
+                    else {
+                        if (month == 10 | month == 11 | month == 12) {
+                            if (month == 10) {
+                                mStringOptionMOnth = "October";
+                            } else if (month == 11) {
+                                mStringOptionMOnth = "Novermber";
+
+                            } else if (month == 12) {
+                                mStringOptionMOnth = "December";
+
+                            }
+                            StartDate = String.valueOf(year) + "-"
+                                    + String.valueOf(month);
+                            System.out.println("Start DAte " + StartDate);
+
+                        } else {
+                            if (month == 1) {
+                                mStringOptionMOnth = "January";
+                            } else if (month == 2) {
+                                mStringOptionMOnth = "February";
+
+                            } else if (month == 3) {
+                                mStringOptionMOnth = "March";
+
+                            } else if (month == 4) {
+                                mStringOptionMOnth = "April";
+
+                            } else if (month == 5) {
+                                mStringOptionMOnth = "May";
+
+                            } else if (month == 6) {
+                                mStringOptionMOnth = "June";
+
+                            } else if (month == 7) {
+                                mStringOptionMOnth = "July";
+
+                            } else if (month == 8) {
+                                mStringOptionMOnth = "August";
+
+                            } else if (month == 9) {
+                                mStringOptionMOnth = "September";
+
+                            }
+                            StartDate = String.valueOf(year) + "-0"
+                                    + String.valueOf(month);
+                            System.out.println("Start DAte " + StartDate);
+                        }
+
+                        mTextViewDate.setText(mStringOptionMOnth + " "
+                                + year);
+
+
+                     }
+               // }
+
 
             }
         });
         mImageViewPrev.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
+            @Override
+            public void onClick(View v) {
+
+
+                    String StartDate = "";
+                    String mStringOptionMOnth = "";
+
+
+                    month--;
+                    System.out.println("month " + month);
+                    if (month == 0) {
+                        month = 12;
+                        mStringOptionMOnth = "December";
+                        year--;
+                        StartDate = String.valueOf(year) + "-"
+                                + String.valueOf(month);
+                        mTextViewDate.setText(mStringOptionMOnth + " "
+                                + year);
+                     }
+                    else
+                    {
+                        if (month == 10 | month == 11 | month == 12) {
+                            if (month == 10) {
+                                mStringOptionMOnth = "October";
+                            } else if (month == 11) {
+                                mStringOptionMOnth = "Novermber";
+
+                            } else if (month == 12) {
+                                mStringOptionMOnth = "December";
+
+                            }
+                            StartDate = String.valueOf(year) + "-"
+                                    + String.valueOf(month);
+                            System.out.println("Start DAte " + StartDate);
+                        } else {
+                            if (month == 1) {
+                                mStringOptionMOnth = "January";
+                            } else if (month == 2) {
+                                mStringOptionMOnth = "February";
+
+                            } else if (month == 3) {
+                                mStringOptionMOnth = "March";
+
+                            } else if (month == 4) {
+                                mStringOptionMOnth = "April";
+
+                            } else if (month == 5) {
+                                mStringOptionMOnth = "May";
+
+                            } else if (month == 6) {
+                                mStringOptionMOnth = "June";
+
+                            } else if (month == 7) {
+                                mStringOptionMOnth = "July";
+
+                            } else if (month == 8) {
+                                mStringOptionMOnth = "August";
+
+                            } else if (month == 9) {
+                                mStringOptionMOnth = "September";
+
+                            }
+                            StartDate = String.valueOf(year) + "-0"
+                                    + String.valueOf(month);
+                            System.out.println("Start DAte " + StartDate);
+                        }
+
+                        mTextViewDate.setText(mStringOptionMOnth + " "
+                                + year);
+
+                    }
             }
         });
+*/
+
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -427,4 +613,95 @@ public class ActivityDrawer extends AppCompatActivity {
 
         }
     }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        switch (id) {
+            case DATE_DIALOG_ID:
+                return new DatePickerDialog(this,
+                        pDateSetListener,
+                        pYear, pMonth, pDay);
+
+        }
+        return null;
+    }
+
+    private DatePickerDialog.OnDateSetListener pDateSetListener =
+            new DatePickerDialog.OnDateSetListener() {
+
+                public void onDateSet(DatePicker view, int year,
+                                      int monthOfYear, int dayOfMonth) {
+                    pYear = year;
+                    pMonth = monthOfYear;
+                    pDay = dayOfMonth;
+                    try {
+                        updateDisplay();
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            };
+
+
+    private void updateDisplay() throws ParseException {
+
+        /*if ((pMonth + 1) == 9 | (pMonth + 1) == 10 | (pMonth + 1) == 11) {
+            if (pDay == 1 | pDay == 2 | pDay == 3 | pDay == 4 | pDay == 5 | pDay == 6 | pDay == 7 | pDay == 8 | pDay == 9) {
+                StartDate = String.valueOf(new StringBuilder()
+                        .append("0")
+                        .append(String.valueOf(pDay)).append("-").append(String.valueOf((pMonth + 1))).append("-")
+                        .append(String.valueOf(pYear)));
+            } else {
+                StartDate = String.valueOf(new StringBuilder()
+                        .append(String.valueOf(pDay)).append("-").append(String.valueOf((pMonth + 1))).append("-")
+                        .append(String.valueOf(pYear)));
+            }
+
+        } else {
+            if (pDay == 1 | pDay == 2 | pDay == 3 | pDay == 4 | pDay == 5 | pDay == 6 | pDay == 7 | pDay == 8 | pDay == 9) {
+                StartDate = String.valueOf(new StringBuilder()
+                        .append("0")
+                        .append(String.valueOf(pDay)).append("-").append("0").append(String.valueOf((pMonth + 1))).append("-")
+                        .append(String.valueOf(pYear)));
+            } else {
+                StartDate = String.valueOf(new StringBuilder()
+                        .append(String.valueOf(pDay)).append("-").append("0").append(String.valueOf((pMonth + 1))).append("-")
+                        .append(String.valueOf(pYear)));
+            }
+
+        }*/
+
+        if ((pMonth + 1) == 9 | (pMonth + 1) == 10 | (pMonth + 1) == 11) {
+            if (pDay == 1 | pDay == 2 | pDay == 3 | pDay == 4 | pDay == 5 | pDay == 6 | pDay == 7 | pDay == 8 | pDay == 9) {
+                StartDate = String.valueOf(new StringBuilder()
+                        .append("0")
+                        .append(String.valueOf(pDay)).append("-").append(String.valueOf((pMonth + 1))).append("-")
+                        .append(String.valueOf(pYear)));
+            } else {
+                StartDate = String.valueOf(new StringBuilder()
+                        .append(String.valueOf(pDay)).append("-").append(String.valueOf((pMonth + 1))).append("-")
+                        .append(String.valueOf(pYear)));
+            }
+
+        } else {
+            if (pDay == 1 | pDay == 2 | pDay == 3 | pDay == 4 | pDay == 5 | pDay == 6 | pDay == 7 | pDay == 8 | pDay == 9) {
+                StartDate = String.valueOf(new StringBuilder()
+                        .append("0")
+                        .append(String.valueOf(pDay)).append("-").append("0").append(String.valueOf((pMonth + 1))).append("-")
+                        .append(String.valueOf(pYear)));
+            } else {
+                StartDate = String.valueOf(new StringBuilder()
+                        .append(String.valueOf(pDay)).append("-").append("0").append(String.valueOf((pMonth + 1))).append("-")
+                        .append(String.valueOf(pYear)));
+            }
+
+        }
+
+        Log.d("StartDate ",StartDate);
+
+        mTextViewDate.setText(methods.DateForamte(StartDate));
+    }
+
+
 }
