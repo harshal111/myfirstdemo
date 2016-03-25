@@ -110,8 +110,7 @@ public class ActivityDrawer extends AppCompatActivity {
     String StartDate="";
     static final int DATE_DIALOG_ID = 0;
     AllMethods methods;
-
-
+    RelativeLayout mRelativeLayoutNoitification;
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +125,7 @@ public class ActivityDrawer extends AppCompatActivity {
         ab.setTitle("");
         ab.setDisplayHomeAsUpEnabled(true);
         mActivity = this;
+        mRelativeLayoutNoitification=(RelativeLayout)tb.findViewById(R.id.relCart);
         methods=new AllMethods(ActivityDrawer.this);
         ab.setHomeButtonEnabled(true);
         mArrayListCompanies = new ArrayList<>();
@@ -144,7 +144,21 @@ public class ActivityDrawer extends AppCompatActivity {
         pYear = cal.get(Calendar.YEAR);
         pMonth = cal.get(Calendar.MONTH);
         pDay = cal.get(Calendar.DAY_OF_MONTH);
+/*
+        mRelativeLayoutNoitification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    // clearing app data
+                    Runtime runtime = Runtime.getRuntime();
+                    runtime.exec("pm clear pkg.android.rootways.cleaning");
 
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });*/
         mTextViewDate = (TextView) findViewById(R.id.txt_dates);
         mListView = (ListView) findViewById(R.id.listitems);
         Calendar c = Calendar.getInstance();

@@ -148,7 +148,7 @@ public class ActivitySubTask extends AppCompatActivity {
                 mTextViewStatus.setText("COMPLETED");
                 mTextViewStatus.setBackgroundResource(R.drawable.rect_comp);
             }
-            mTextViewStatus.setOnClickListener(new View.OnClickListener() {
+            /*mTextViewStatus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     IntentIntegrator integrator = new IntentIntegrator(mActivity);
@@ -160,7 +160,7 @@ public class ActivitySubTask extends AppCompatActivity {
                     integrator.initiateScan();
                 }
             });
-
+*/
 
             return view;
         }
@@ -180,10 +180,19 @@ public class ActivitySubTask extends AppCompatActivity {
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                 String formattedDate = df.format(c.getTime());
 
-                boolean isUpdate=mDatabaseConnectionAPI.updateStartTask(scanid,formattedDate.toString(),"p");
+                boolean isUpdate=mDatabaseConnectionAPI.updateStartTask(scanid,formattedDate.toString(),"w");
                 if (isUpdate==true)
                 {
                     Toast.makeText(this, "Your work is started.", Toast.LENGTH_LONG).show();
+                    mArrayListGetSubLocations = new ArrayList<>();
+                    mArrayListGetSubLocations=mDatabaseConnectionAPI.getSubLocation(loc);
+                    if (mArrayListGetSubLocations.size()>0)
+                    {
+                        mSubCategoryAdapter=new SubCategoryAdapter(ActivitySubTask.this,mArrayListGetSubLocations);
+                        mListView.setAdapter(mSubCategoryAdapter);
+                    }
+
+
                 }
                 else
                 {
