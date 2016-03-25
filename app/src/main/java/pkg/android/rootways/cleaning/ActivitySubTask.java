@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -22,7 +23,9 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import helper.DatabaseConnectionAPI;
 import parser.GetLocation;
@@ -43,7 +46,7 @@ public class ActivitySubTask extends AppCompatActivity {
     String name;
     TextView mTextViewTitle;;
     RelativeLayout mRelativeLayoutRoot;
-
+    int scanid=0;
     SubCategoryAdapter mSubCategoryAdapter;
     int loc;
     @Override
@@ -76,7 +79,23 @@ public class ActivitySubTask extends AppCompatActivity {
             mListView.setAdapter(mSubCategoryAdapter);
         }
 
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                IntentIntegrator integrator = new IntentIntegrator(ActivitySubTask.this);
+                  scanid=mArrayListGetSubLocations.get(i).getSubid();
+                Log.d("scanid ",String.valueOf(scanid));
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                integrator.setPrompt("Scan");
+                integrator.setCameraId(0);
+                integrator.setBeepEnabled(false);
+                integrator.setBarcodeImageEnabled(false);
+                integrator.initiateScan();
+            }
+        });
+
     }
+
     public class SubCategoryAdapter extends BaseAdapter
     {
 
@@ -156,6 +175,21 @@ public class ActivitySubTask extends AppCompatActivity {
                 //Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("MainActivity", "Scanned");
+                Calendar c = Calendar.getInstance();
+                System.out.println("Current time => " + c.getTime());
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                String formattedDate = df.format(c.getTime());
+
+                boolean isUpdate=mDatabaseConnectionAPI.updateStartTask(scanid,formattedDate.toString(),"p");
+                if (isUpdate==true)
+                {
+                    Toast.makeText(this, "Your work is started.", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(this, "Your work is not started due to wrong QR code scanned.", Toast.LENGTH_LONG).show();
+                }
+
               /*  View rootView =  getWindow().getDecorView().findViewById(android.R.id.content);
                 Snackbar mysnack= Snackbar.make(rootView, result.getContents(), Snackbar.LENGTH_LONG);
 
@@ -166,7 +200,7 @@ public class ActivitySubTask extends AppCompatActivity {
                 mysnack.show();*/
 
                 //Snackbar.make(mRelativeLayoutRoot,result.getContents(),Snackbar.LENGTH_LONG).show();
-                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+
             }
         } else {
             // This is important, otherwise the result will not be passed to the fragment

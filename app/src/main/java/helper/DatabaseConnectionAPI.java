@@ -64,6 +64,25 @@ public class DatabaseConnectionAPI extends SQLiteOpenHelper{
         return b;
     }
 
+    public  boolean  updateStartTask(int sub_id,String fname,String status)
+    {
+        boolean b = false;
+        openDataBase();
+        try {
+            String sql="UPDATE emp_sub_task_master SET sub_s_time="+ "'"+fname +"'"+" , sub_cat_status= "+ "'"+status +"'"+" WHERE  esub_id = "+sub_id+" ";
+            System.out.println("SQL UPDATE "+sql);
+            b=true;
+            db.execSQL(sql);
+            //			db.execSQL("UPDATE chat SET is_filetransfer_complete = "+master.getFileTransferStatus()+" WHERE  chat_id = "+master.getChat_id()+" ");
+
+        } 	catch (Exception e) {
+            e.printStackTrace();
+            b=false;
+        }
+        return b;
+    }
+
+
     /**
      * Creates a empty database on the system and rewrites it with your own database.
      * */
@@ -251,6 +270,10 @@ public class DatabaseConnectionAPI extends SQLiteOpenHelper{
                 while (!mCursorCategory.isAfterLast()) {
 
                     GetSubLocation mParserCategory = new GetSubLocation();
+
+                    mParserCategory
+                            .setSubid((Integer.parseInt(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("esub_id")))));
 
                     mParserCategory
                             .setCmid((Integer.parseInt(mCursorCategory.getString(mCursorCategory
