@@ -374,6 +374,7 @@ public class ActivityDrawer extends AppCompatActivity {
         mArrayList.add(new DrawerItems("VIEW PENDING TASK", R.drawable.ic_launcher, true, "-1"));
         mArrayList.add(new DrawerItems("SEND MESSAGE TO OFFICE", R.drawable.ic_launcher, true, "-1"));
         mArrayList.add(new DrawerItems("REQUESTS", R.drawable.ic_launcher, true, "-1"));
+       // mArrayList.add(new DrawerItems("REPORT", R.drawable.ic_launcher, true, "-1"));
 
         mDrawerListAdapter = new DrawerListAdapter(ActivityDrawer.this, mArrayList);
         mDrawerList.setAdapter(mDrawerListAdapter);
@@ -440,6 +441,7 @@ public class ActivityDrawer extends AppCompatActivity {
                 } else if (position == 4) {
 
                 }
+
                 /*if (position==1)
                 {
                     FragmentTransaction ft =  getSupportFragmentManager().beginTransaction();
