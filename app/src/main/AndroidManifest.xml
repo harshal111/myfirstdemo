@@ -44,7 +44,9 @@
         <activity
             android:name=".ActivityProfile"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".ActivityTaskDetail"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

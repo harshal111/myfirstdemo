@@ -12,6 +12,60 @@ public class GetCompletePendingTask {
     String workmode;
     String location;
     String cname;
+    String msdate;
+    String mstime;
+    String metime;
+    String edate;
+    String estime;
+    String eetime;
+
+    public String getMsdate() {
+        return msdate;
+    }
+
+    public void setMsdate(String msdate) {
+        this.msdate = msdate;
+    }
+
+    public String getMstime() {
+        return mstime;
+    }
+
+    public void setMstime(String mstime) {
+        this.mstime = mstime;
+    }
+
+    public String getMetime() {
+        return metime;
+    }
+
+    public void setMetime(String metime) {
+        this.metime = metime;
+    }
+
+    public String getEdate() {
+        return edate;
+    }
+
+    public void setEdate(String edate) {
+        this.edate = edate;
+    }
+
+    public String getEstime() {
+        return estime;
+    }
+
+    public void setEstime(String estime) {
+        this.estime = estime;
+    }
+
+    public String getEetime() {
+        return eetime;
+    }
+
+    public void setEetime(String eetime) {
+        this.eetime = eetime;
+    }
 
     public int getEsubid() {
         return esubid;

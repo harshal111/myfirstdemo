@@ -70,6 +70,7 @@ public class ActivitySubTask extends AppCompatActivity {
             }
         });
         mTextViewTitle.setText(name);
+
         mDatabaseConnectionAPI = new DatabaseConnectionAPI(getApplicationContext());
         mArrayListGetSubLocations = new ArrayList<>();
         mArrayListGetSubLocations=mDatabaseConnectionAPI.getSubLocation(loc);
@@ -178,9 +179,12 @@ public class ActivitySubTask extends AppCompatActivity {
                 Calendar c = Calendar.getInstance();
                 System.out.println("Current time => " + c.getTime());
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                String formattedDate = df.format(c.getTime());
+                SimpleDateFormat df1 = new SimpleDateFormat("hh:mm");
 
-                boolean isUpdate=mDatabaseConnectionAPI.updateStartTask(scanid,formattedDate.toString(),"w");
+                String formattedDate = df.format(c.getTime());
+                String formattedDate1 = df1.format(c.getTime());
+
+                boolean isUpdate=mDatabaseConnectionAPI.updateStartTask(scanid,formattedDate.toString(),formattedDate1.toString(),"w");
                 if (isUpdate==true)
                 {
                     Toast.makeText(this, "Your work is started.", Toast.LENGTH_LONG).show();

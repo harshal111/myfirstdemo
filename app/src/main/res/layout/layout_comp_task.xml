@@ -7,6 +7,17 @@
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar_detial"/>
+
+    <TextView
+        android:id="@+id/txt_no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/text_20"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:layout_below="@+id/toolbar"
+        android:visibility="gone"
+        android:text="There are no any pending tasks."/>
     <ListView
         android:id="@+id/lists"
         android:layout_width="match_parent"

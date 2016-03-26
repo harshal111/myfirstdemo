@@ -2,6 +2,7 @@ package pkg.android.rootways.cleaning;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -89,16 +90,28 @@ public class ActivityCompleteTask extends AppCompatActivity {
         }
 
         @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
+        public View getView(final int i, View view, ViewGroup viewGroup) {
             inflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.row_task, viewGroup, false);
             TextView mTextView = (TextView) view.findViewById(R.id.txt_name);
+            TextView mTextViewDetail=(TextView)view.findViewById(R.id.txt_view);
             TextView mTextViewLoc = (TextView) view.findViewById(R.id.txt_desc);
             TextView mTextViewSubLoc = (TextView) view.findViewById(R.id.txt_status);
             mTextView.setText(list.get(i).getCname());
             mTextViewLoc.setText(list.get(i).getLocation());
             mTextViewSubLoc.setText(list.get(i).getSubcat());
+            mTextViewDetail.setVisibility(View.VISIBLE);
+            mTextViewDetail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int scanid=list.get(i).getEsubid();
+                    Intent mIntent=new Intent(ActivityCompleteTask.this,ActivityTaskDetail.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    mIntent.putExtra("uid",scanid);
 
+                    startActivity(mIntent);
+
+                }
+            });
             return view;
         }
     }

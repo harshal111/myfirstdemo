@@ -64,12 +64,31 @@ public class DatabaseConnectionAPI extends SQLiteOpenHelper{
         return b;
     }
 
-    public  boolean  updateStartTask(int sub_id,String fname,String status)
+    public  boolean  updateStartTask(int sub_id,String fname,String time,String status)
     {
         boolean b = false;
         openDataBase();
         try {
-            String sql="UPDATE emp_sub_task_master SET sub_s_time="+ "'"+fname +"'"+" , sub_cat_status= "+ "'"+status +"'"+" WHERE  esub_id = "+sub_id+" ";
+            String sql="UPDATE emp_sub_task_master SET sub_s_time="+ "'"+time +"'"+" , sub_cat_status= "+ "'"+status +"'"+" , emp_e_assign_date= "+ "'"+fname +"'"+" WHERE  esub_id = "+sub_id+" ";
+            System.out.println("SQL UPDATE "+sql);
+            b=true;
+            db.execSQL(sql);
+            //			db.execSQL("UPDATE chat SET is_filetransfer_complete = "+master.getFileTransferStatus()+" WHERE  chat_id = "+master.getChat_id()+" ");
+
+        } 	catch (Exception e) {
+            e.printStackTrace();
+            b=false;
+        }
+        return b;
+    }
+
+
+    public  boolean  updateEndTask(int sub_id,String fname,String time,String status)
+    {
+        boolean b = false;
+        openDataBase();
+        try {
+            String sql="UPDATE emp_sub_task_master SET sub_e_time="+ "'"+time +"'"+" , sub_cat_status= "+ "'"+status +"'"+" , emp_e_assign_date= "+ "'"+fname +"'"+" WHERE  esub_id = "+sub_id+" ";
             System.out.println("SQL UPDATE "+sql);
             b=true;
             db.execSQL(sql);
@@ -278,36 +297,47 @@ public class DatabaseConnectionAPI extends SQLiteOpenHelper{
                     mParserCategory
                             .setCmid((Integer.parseInt(mCursorCategory.getString(mCursorCategory
                                     .getColumnIndex("cmid")))));
+
                     mParserCategory
                             .setLocid((Integer.parseInt(mCursorCategory.getString(mCursorCategory
                                     .getColumnIndex("loc_id")))));
+
                     mParserCategory
                             .setCmid((Integer.parseInt(mCursorCategory.getString(mCursorCategory
                                     .getColumnIndex("cmid")))));
+
                     mParserCategory
                             .setDesc(mCursorCategory.getString(mCursorCategory
                                     .getColumnIndex("sub_cat_desc")));
+
                     mParserCategory
                             .setEnddate(mCursorCategory.getString(mCursorCategory
                                     .getColumnIndex("sub_e_time")));
+
                     mParserCategory
                             .setStartdate(mCursorCategory.getString(mCursorCategory
                                     .getColumnIndex("sub_s_time")));
+
                     mParserCategory
                             .setStatus(mCursorCategory.getString(mCursorCategory
                                     .getColumnIndex("sub_cat_status")));
+
                     mParserCategory
                             .setSubname(mCursorCategory.getString(mCursorCategory
                                     .getColumnIndex("sub_cat_name")));
+
                     mParserCategory
                             .setWorkmode(mCursorCategory.getString(mCursorCategory
                                     .getColumnIndex("working_mode")));
+
                     mParserCategory
                             .setEmpstime(mCursorCategory.getString(mCursorCategory
                                     .getColumnIndex("emp_start_time")));
+
                     mParserCategory
                             .setEmpetime(mCursorCategory.getString(mCursorCategory
                                     .getColumnIndex("emp_end_time")));
+
                     mGetCategoryList.add(mParserCategory);
 
                     mCursorCategory.moveToNext();
@@ -379,6 +409,77 @@ public class DatabaseConnectionAPI extends SQLiteOpenHelper{
         return mGetCategoryList;
     }
 
+    public ArrayList<GetCompletePendingTask> getTaskDetail(int status) {
+
+        openDataBase();
+        ArrayList<GetCompletePendingTask> mGetCategoryList = new ArrayList<GetCompletePendingTask>();
+        try {
+            String sqlQuery = "SELECT * FROM emp_sub_task_master et, location_master l, company_master c  where et.loc_id=l.loc_id and l.cmid=c.cmid and  et.esub_id="+status;
+            Cursor mCursorCategory = Query(sqlQuery);
+            if (mCursorCategory != null) {
+                mCursorCategory.moveToFirst();
+                while (!mCursorCategory.isAfterLast()) {
+
+                    GetCompletePendingTask mParserCategory = new GetCompletePendingTask();
+
+                    mParserCategory
+                            .setCmid((Integer.parseInt(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("cmid")))));
+                    mParserCategory
+                            .setLocid((Integer.parseInt(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("loc_id")))));
+
+                    mParserCategory
+                            .setEsubid((Integer.parseInt(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("esub_id")))));
+
+                    mParserCategory
+                            .setCname(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("cname")));
+
+                    mParserCategory
+                            .setLocation(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("loc_name")));
+                    mParserCategory
+                            .setSubcat(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("sub_cat_name")));
+                    mParserCategory
+                            .setWorkmode(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("working_mode")));
+
+                    mParserCategory
+                            .setEdate(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("emp_e_assign_date")));
+
+                    mParserCategory
+                            .setEetime(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("sub_e_time")));
+
+                    mParserCategory
+                            .setEstime(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("sub_s_time")));
+
+                    mParserCategory
+                            .setMsdate(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("emp_m_assign_date")));
+                    mParserCategory
+                            .setMstime(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("emp_start_time")));
+
+                    mParserCategory
+                            .setMetime(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("emp_end_time")));
+                    mGetCategoryList.add(mParserCategory);
+
+                    mCursorCategory.moveToNext();
+                }
+            }
+            mCursorCategory.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mGetCategoryList;
+    }
 
 
     public ArrayList<GetCompletePendingTask> getCompletePendingTask(String status) {

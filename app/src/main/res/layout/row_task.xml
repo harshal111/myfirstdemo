@@ -26,10 +26,11 @@
             android:layout_below="@+id/txt_name"
             android:layout_marginTop="@dimen/margin_5dp"
             android:layout_toLeftOf="@+id/txt_viewtasks"
-            android:text="Washroom"
-            android:singleLine="false"
-            android:maxLines="2"
             android:ellipsize="end"
+            android:maxLines="2"
+            android:layout_marginRight="@dimen/margin_5dp"
+            android:singleLine="false"
+            android:text="Washroom"
             android:textColor="@color/color_gray"
             android:textSize="@dimen/text_12"
             android:textStyle="normal" />
@@ -52,21 +53,38 @@
                 android:text="Pending"
                 android:textColor="@color/color_gray"
                 android:textSize="@dimen/text_12"
-                  android:textStyle="normal" />
+                android:textStyle="normal" />
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/txt_viewtasks"
-            android:layout_width="wrap_content"
+            android:id="@+id/txt_complete"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:text="MAK COMPLETE"
             android:background="@drawable/rect_comp"
-            android:visibility="gone"
+            android:gravity="center"
             android:padding="@dimen/margin_5dp"
+            android:text="MAKE COMPLETE"
             android:textColor="@android:color/white"
             android:textSize="@dimen/text_10"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txt_view"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/txt_complete"
+            android:layout_marginTop="@dimen/margin_5dp"
+            android:background="@drawable/rect_view"
+            android:gravity="center"
+            android:padding="@dimen/margin_5dp"
+            android:text="VIEW DETAIL"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_10"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
     </RelativeLayout>
 </RelativeLayout>
