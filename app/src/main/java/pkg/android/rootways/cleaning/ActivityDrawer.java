@@ -104,13 +104,14 @@ public class ActivityDrawer extends AppCompatActivity {
     TextView mTextViewUserName;
     TextView mTextViewProfileLink;
 
-    int month=0;
-    int year=0;
-    String mStringOptionMOnth="";
-    String StartDate="";
+    int month = 0;
+    int year = 0;
+    String mStringOptionMOnth = "";
+    String StartDate = "";
     static final int DATE_DIALOG_ID = 0;
     AllMethods methods;
     RelativeLayout mRelativeLayoutNoitification;
+
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,8 +126,8 @@ public class ActivityDrawer extends AppCompatActivity {
         ab.setTitle("");
         ab.setDisplayHomeAsUpEnabled(true);
         mActivity = this;
-        mRelativeLayoutNoitification=(RelativeLayout)tb.findViewById(R.id.relCart);
-        methods=new AllMethods(ActivityDrawer.this);
+        mRelativeLayoutNoitification = (RelativeLayout) tb.findViewById(R.id.relCart);
+        methods = new AllMethods(ActivityDrawer.this);
         ab.setHomeButtonEnabled(true);
         mArrayListCompanies = new ArrayList<>();
         mRelativeLayoutDrawer = (RelativeLayout) findViewById(R.id.left_drawer);
@@ -177,7 +178,7 @@ public class ActivityDrawer extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mDrawerLayout.closeDrawer(mRelativeLayoutDrawer);
-                Intent mIntent=new Intent(ActivityDrawer.this,ActivityProfile.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Intent mIntent = new Intent(ActivityDrawer.this, ActivityProfile.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(mIntent);
             }
         });
@@ -374,7 +375,7 @@ public class ActivityDrawer extends AppCompatActivity {
         mArrayList.add(new DrawerItems("VIEW PENDING TASK", R.drawable.ic_launcher, true, "-1"));
         mArrayList.add(new DrawerItems("SEND MESSAGE TO OFFICE", R.drawable.ic_launcher, true, "-1"));
         mArrayList.add(new DrawerItems("REQUESTS", R.drawable.ic_launcher, true, "-1"));
-       // mArrayList.add(new DrawerItems("REPORT", R.drawable.ic_launcher, true, "-1"));
+        // mArrayList.add(new DrawerItems("REPORT", R.drawable.ic_launcher, true, "-1"));
 
         mDrawerListAdapter = new DrawerListAdapter(ActivityDrawer.this, mArrayList);
         mDrawerList.setAdapter(mDrawerListAdapter);
@@ -556,10 +557,19 @@ public class ActivityDrawer extends AppCompatActivity {
             mTextViewTiming.setText(list.get(i).getCarea());
             if (list.get(i).getCstatus().equalsIgnoreCase("p")) {
                 mTextViewStatus.setText("Pending");
+                int imgResource = R.drawable.pending;
+                mTextViewStatus.setCompoundDrawablesWithIntrinsicBounds(0, 0, imgResource, 0);
+
             } else if (list.get(i).getCstatus().equalsIgnoreCase("w")) {
                 mTextViewStatus.setText("Working");
+                int imgResource = R.drawable.working;
+                mTextViewStatus.setCompoundDrawablesWithIntrinsicBounds(0, 0, imgResource, 0);
+
             } else {
                 mTextViewStatus.setText("Completed");
+                int imgResource = R.drawable.complited;
+                mTextViewStatus.setCompoundDrawablesWithIntrinsicBounds(0, 0, imgResource, 0);
+
             }
 
             return view;
@@ -714,7 +724,7 @@ public class ActivityDrawer extends AppCompatActivity {
 
         }
 
-        Log.d("StartDate ",StartDate);
+        Log.d("StartDate ", StartDate);
 
         mTextViewDate.setText(methods.DateForamte(StartDate));
     }

@@ -2,7 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4DA465">
+    android:background="#4da465">
+
+    <RelativeLayout
+        android:id="@+id/rel_top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rel_tops"
+        android:background="@android:color/white">
+
+        <ImageView
+            android:id="@+id/img_loog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/logo" />
+    </RelativeLayout>
+
 
     <RelativeLayout
         android:id="@+id/rel_tops"
@@ -10,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_margin="10dp">
+
 
         <Spinner
             android:id="@+id/spn_option"
@@ -23,12 +41,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/spn_option"
+            android:layout_marginTop="@dimen/margin_5dp"
             android:background="@drawable/textfield_full"
             android:hint="Username"
             android:padding="5dp"
-            android:textSize="@dimen/text_13"
-            android:layout_marginTop="@dimen/margin_5dp"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textSize="@dimen/text_13" />
 
         <RelativeLayout
             android:id="@+id/rel_pass"
@@ -42,13 +60,13 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="10dp"
-                android:textSize="@dimen/text_13"
                 android:layout_toLeftOf="@+id/txt_login"
                 android:background="@drawable/textfield_full"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:padding="5dp"
                 android:singleLine="true"
+                android:textSize="@dimen/text_13"
 
                 />
 
@@ -79,5 +97,17 @@
             android:text="@string/fg"
             android:textColor="@android:color/white"
             android:textStyle="normal" />
+
+
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img_footer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/margin_10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_logo" />
 </RelativeLayout>

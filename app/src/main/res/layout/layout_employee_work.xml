@@ -25,7 +25,7 @@
             android:layout_alignBottom="@+id/rel_right"
             android:layout_alignTop="@+id/rel_right"
             android:layout_toLeftOf="@+id/rel_right"
-            android:background="#555554"
+            android:background="#545453"
             android:padding="@dimen/margin_10dp"
             android:gravity="center_vertical">
 
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/rel_left"
             android:cacheColorHint="@android:color/transparent"
-            android:divider="#ECECEC"
+            android:divider="#e3e3e3"
             android:dividerHeight="2.0sp" />
     </RelativeLayout>
 </RelativeLayout>

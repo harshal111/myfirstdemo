@@ -8,9 +8,9 @@
         android:id="@+id/itemLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#3C3B3B"
-        android:paddingLeft="@dimen/margin_10dp"
-        android:orientation="vertical">
+        android:background="#393838"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/margin_10dp">
 
         <LinearLayout
             android:id="@+id/rel_main"
@@ -44,13 +44,14 @@
 
 
     </LinearLayout>
+
     <View
         android:id="@+id/v_sepratir"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
+        android:layout_below="@+id/itemLayout"
         android:layout_marginLeft="@dimen/margin_15dp"
         android:layout_marginRight="@dimen/margin_15dp"
-        android:layout_below="@+id/itemLayout"
-        android:background="#2F2E2E"/>
+        android:background="#282727" />
 
 </RelativeLayout>

@@ -34,6 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="Pending"
+            android:drawablePadding="@dimen/margin_5dp"
             android:textColor="@android:color/black"
             android:textSize="@dimen/text_12"
             android:textStyle="normal" />

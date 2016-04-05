@@ -19,7 +19,7 @@
     android:id="@+id/toolbar"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@color/header_bg"
+    android:background="#4da465"
     local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
     <ImageView
@@ -60,7 +60,7 @@
             android:id="@+id/imgCart"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/alert" />
+            android:src="@drawable/ball" />
 
         <TextView
             android:id="@+id/lblNotification"

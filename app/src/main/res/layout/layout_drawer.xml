@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:background="@android:color/white"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
 
     <LinearLayout
@@ -75,9 +75,9 @@
                             android:layout_centerVertical="true"
                             android:layout_toRightOf="@+id/img_prev"
                             android:text=""
-                            android:textStyle="bold"
+                            android:textColor="@android:color/white"
                             android:textSize="@dimen/text_14"
-                            android:textColor="@android:color/white" />
+                            android:textStyle="bold" />
 
                         <ImageView
                             android:id="@+id/img_next"
@@ -110,7 +110,7 @@
         android:layout_width="@dimen/navdrawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#3C3B3B">
+        android:background="#393838">
 
         <RelativeLayout
             android:id="@+id/rel_list_header"
@@ -131,7 +131,7 @@
                     android:layout_height="96dp"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/profile"
-                    app:civ_border_color="#FF6E6E6E"
+                    app:civ_border_color="#FF6f6E6E"
                     app:civ_border_width="5dp" />
 
                 <TextView
@@ -155,7 +155,7 @@
                     android:layout_marginLeft="@dimen/margin_5dp"
                     android:gravity="left"
                     android:text="@string/profile"
-                    android:textColor="@android:color/white"
+                    android:textColor="#989898"
                     android:textStyle="normal" />
             </RelativeLayout>
 
@@ -188,9 +188,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="@dimen/margin_10dp"
-                android:drawableTop="@drawable/tool"
-                android:text="SETTINGS"
-                android:textColor="@android:color/white" />
+                android:drawableTop="@drawable/call"
+                android:text="CALL OFFICE"
+                android:textColor="@android:color/white"
+                android:textStyle="normal" />
 
             <TextView
                 android:id="@+id/txt_logout"
@@ -200,7 +201,9 @@
                 android:drawablePadding="@dimen/margin_10dp"
                 android:drawableTop="@drawable/logout"
                 android:text="LOGOUT"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+
+                android:textStyle="normal" />
         </RelativeLayout>
 
 
