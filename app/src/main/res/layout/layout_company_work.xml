@@ -48,7 +48,7 @@
             android:layout_alignBottom="@+id/rel_right"
             android:layout_alignTop="@+id/rel_right"
             android:layout_toLeftOf="@+id/rel_right"
-            android:background="@color/color_green"
+            android:background="@color/color_gray_2"
             android:gravity="center_vertical">
 
             <TextView

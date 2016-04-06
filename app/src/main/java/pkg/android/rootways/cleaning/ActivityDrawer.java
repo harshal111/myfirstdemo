@@ -440,6 +440,8 @@ public class ActivityDrawer extends AppCompatActivity {
                     Intent mIntent = new Intent(ActivityDrawer.this, ActivityMessage.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(mIntent);
                 } else if (position == 4) {
+                    Intent mIntent = new Intent(ActivityDrawer.this, ActivityRequest.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(mIntent);
 
                 }
 
