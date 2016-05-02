@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -53,8 +54,22 @@ public class ActivityLogin extends AppCompatActivity {
                 } else {
                     mEditTextPass.setText("");
                     mEditTextUN.setText("");
-                    Intent mIntent = new Intent(ActivityLogin.this, ActivityDrawer.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(mIntent);
+                    if (CleaningApplication.mStringUserMode.equalsIgnoreCase("Owner"))
+                    {
+                        Intent mIntent = new Intent(ActivityLogin.this, ActivityDrawer.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(mIntent);
+                    }
+                    else if (CleaningApplication.mStringUserMode.equalsIgnoreCase("Manager"))
+                    {
+                        Intent mIntent = new Intent(ActivityLogin.this, ActivityDrawerManager.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(mIntent);
+                    }
+                    else
+                    {
+                        Intent mIntent = new Intent(ActivityLogin.this, ActivityDrawer.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(mIntent);
+                    }
+
                 }
 
             }
@@ -70,7 +85,17 @@ public class ActivityLogin extends AppCompatActivity {
         }
         mLoginOPtionAdapter = new LoginOPtionAdapter(ActivityLogin.this, R.layout.spin_layout, option);
         mSpinnerLoginOption.setAdapter(mLoginOPtionAdapter);
+        mSpinnerLoginOption.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                CleaningApplication.mStringUserMode = option[i];
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
     }
 

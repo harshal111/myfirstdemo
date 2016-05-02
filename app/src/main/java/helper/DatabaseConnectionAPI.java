@@ -17,8 +17,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import parser.GetAreaActivity;
+import parser.GetAreaCode;
+import parser.GetAssignTask;
 import parser.GetCompany;
 import parser.GetCompletePendingTask;
+import parser.GetEmployee;
 import parser.GetLocation;
 import parser.GetProfile;
 import parser.GetSubLocation;
@@ -275,6 +279,91 @@ public class DatabaseConnectionAPI extends SQLiteOpenHelper{
             e.printStackTrace();
         }
         return mCursor;
+    }
+
+    public ArrayList<GetAssignTask> getAssignTasks() {
+
+        openDataBase();
+        ArrayList<GetAssignTask> mGetCategoryList = new ArrayList<GetAssignTask>();
+        try {
+            String sqlQuery = "SELECT * FROM job_master j, company_master c, employee_master e where j.cmid=c.cmid and j.emp_id=e.emp_id and j.cmid=1";
+            Cursor mCursorCategory = Query(sqlQuery);
+            if (mCursorCategory != null) {
+                mCursorCategory.moveToFirst();
+                while (!mCursorCategory.isAfterLast()) {
+
+                    GetAssignTask mParserCategory = new GetAssignTask();
+
+                    mParserCategory
+                            .setCid((Integer.parseInt(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("cmid")))));
+
+                    mParserCategory
+                            .setEid((Integer.parseInt(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("emp_id")))));
+
+                    mParserCategory
+                            .setJid((Integer.parseInt(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("jid")))));
+
+                    mParserCategory
+                            .setActivity(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("activity")));
+                    mParserCategory
+                            .setActivity(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("activity")));
+
+                    mParserCategory
+                            .setAreacode(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("area_code")));
+                    mParserCategory
+                            .setArea(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("area")));
+                    mParserCategory
+                            .setCname(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("cname")));
+
+                    mParserCategory
+                            .setStatus(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("status")));
+
+                    mParserCategory
+                            .setEtime(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("end_time")));
+
+                    mParserCategory
+                            .setFreq(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("frequency")));
+
+                    mParserCategory
+                            .setNote(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("notes")));
+
+                    mParserCategory
+                            .setTimeallocat(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("time_allocate")));
+
+                    mParserCategory
+                            .setPriority(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("priority")));
+
+                    mParserCategory
+                            .setStime(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("start_time")));
+
+                    mParserCategory
+                            .setEname(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("emp_name")));
+                    mGetCategoryList.add(mParserCategory);
+
+                    mCursorCategory.moveToNext();
+                }
+            }
+            mCursorCategory.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mGetCategoryList;
     }
 
     public ArrayList<GetSubLocation> getSubLocation(int id) {
@@ -699,6 +788,163 @@ public class DatabaseConnectionAPI extends SQLiteOpenHelper{
         }
         return mGetCategoryList;
     }
+
+    public ArrayList<GetAreaActivity> getAreaActivityDropDown(int cid) {
+
+        openDataBase();
+        ArrayList<GetAreaActivity> mGetCategoryList = new ArrayList<GetAreaActivity>();
+        GetAreaActivity mParserCategory1 = new GetAreaActivity();
+        mParserCategory1.setName("Select Activity");
+        mGetCategoryList.add(0, mParserCategory1);
+
+        try {
+            String sqlQuery = "SELECT * FROM cleaning_area_master where cmid="+cid;
+            Cursor mCursorCategory = Query(sqlQuery);
+            if (mCursorCategory != null) {
+                mCursorCategory.moveToFirst();
+                while (!mCursorCategory.isAfterLast()) {
+
+                    GetAreaActivity mParserCategory = new GetAreaActivity();
+
+                    mParserCategory
+                            .setName(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("activity")));
+
+                    mGetCategoryList.add(mParserCategory);
+
+                    mCursorCategory.moveToNext();
+                }
+            }
+            mCursorCategory.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mGetCategoryList;
+    }
+
+
+    public ArrayList<GetAreaCode> getAreaCodeDropDown(int cid) {
+
+        openDataBase();
+        ArrayList<GetAreaCode> mGetCategoryList = new ArrayList<GetAreaCode>();
+        GetAreaCode mParserCategory1 = new GetAreaCode();
+        mParserCategory1.setName("Select Area Code");
+        mGetCategoryList.add(0, mParserCategory1);
+
+        try {
+            String sqlQuery = "SELECT * FROM cleaning_area_master where cmid="+cid;
+            Cursor mCursorCategory = Query(sqlQuery);
+            if (mCursorCategory != null) {
+                mCursorCategory.moveToFirst();
+                while (!mCursorCategory.isAfterLast()) {
+
+                    GetAreaCode mParserCategory = new GetAreaCode();
+
+                     mParserCategory
+                            .setName(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("area_code")));
+                    mParserCategory
+                            .setArea(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("area")));
+
+                    mGetCategoryList.add(mParserCategory);
+
+                    mCursorCategory.moveToNext();
+                }
+            }
+            mCursorCategory.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mGetCategoryList;
+    }
+
+    public ArrayList<GetEmployee> getEmployeeDropDown(int cid) {
+
+        openDataBase();
+        ArrayList<GetEmployee> mGetCategoryList = new ArrayList<GetEmployee>();
+        GetEmployee mParserCategory1 = new GetEmployee();
+        mParserCategory1.setId(0);
+        mParserCategory1.setName("Select Employee");
+        mGetCategoryList.add(0, mParserCategory1);
+
+        try {
+            String sqlQuery = "SELECT * FROM employee_master where cmid="+cid;
+            Cursor mCursorCategory = Query(sqlQuery);
+            if (mCursorCategory != null) {
+                mCursorCategory.moveToFirst();
+                while (!mCursorCategory.isAfterLast()) {
+
+                    GetEmployee mParserCategory = new GetEmployee();
+
+                    mParserCategory
+                            .setId((Integer.parseInt(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("emp_id")))));
+                    mParserCategory
+                            .setName(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("emp_name")));
+
+                    mGetCategoryList.add(mParserCategory);
+
+                    mCursorCategory.moveToNext();
+                }
+            }
+            mCursorCategory.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mGetCategoryList;
+    }
+
+    public ArrayList<GetCompany> getCompanyDropDown(int id) {
+
+        openDataBase();
+        ArrayList<GetCompany> mGetCategoryList = new ArrayList<GetCompany>();
+        GetCompany mParserCategory1 = new GetCompany();
+        mParserCategory1.setCmid(0);
+        mParserCategory1.setCname("Select Company");
+        mGetCategoryList.add(0,mParserCategory1);
+
+        try {
+            String sqlQuery = "SELECT * FROM company_master where cmid="+id;
+            Cursor mCursorCategory = Query(sqlQuery);
+            if (mCursorCategory != null) {
+                mCursorCategory.moveToFirst();
+                while (!mCursorCategory.isAfterLast()) {
+
+                    GetCompany mParserCategory = new GetCompany();
+
+                    mParserCategory
+                            .setCmid((Integer.parseInt(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("cmid")))));
+                    mParserCategory
+                            .setCaddress(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("caddress")));
+                    mParserCategory
+                            .setCarea(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("carea")));
+                    mParserCategory
+                            .setCname(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("cname")));
+                    mParserCategory
+                            .setCphone(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("cphone")));
+                    mParserCategory
+                            .setCstatus(mCursorCategory.getString(mCursorCategory
+                                    .getColumnIndex("cstatus")));
+
+                    mGetCategoryList.add(mParserCategory);
+
+                    mCursorCategory.moveToNext();
+                }
+            }
+            mCursorCategory.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mGetCategoryList;
+    }
+
     public ArrayList<GetCompany> getComapny() {
 
         openDataBase();

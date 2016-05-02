@@ -50,6 +50,16 @@
         <activity
             android:name=".ActivityRequest"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityDrawerManager"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityAddNewTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ActivityAssignTaskByManager"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

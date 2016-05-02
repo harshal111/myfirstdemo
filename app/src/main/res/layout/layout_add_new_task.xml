@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_detial" />
+
+    <ScrollView
+        android:id="@+id/scl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
+
+        <RelativeLayout
+            android:id="@+id/scl_rel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_10dp">
+
+            <Spinner
+                android:id="@+id/spn_company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/spn_area_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spn_company" />
+
+            <Spinner
+                android:id="@+id/spn_activty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spn_area_code" />
+
+            <Spinner
+                android:id="@+id/spn_emp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spn_activty" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_edt_time_allocate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spn_emp">
+
+                <EditText
+                    android:id="@+id/edt_time_allocate"
+                    style="@style/Edittext"
+                    android:hint="Time allocate *"
+                    android:inputType="number"
+                    android:text=""
+                    android:textSize="@dimen/text_13" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_timiing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/input_layout_edt_time_allocate"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_edt_stime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/spn_emp"
+                    android:layout_weight="50">
+
+                    <EditText
+                        android:id="@+id/edt_stime"
+                        style="@style/Edittext"
+                        android:editable="false"
+                        android:hint="Start Time *"
+                        android:text=" "
+                        android:textSize="@dimen/text_13" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_edt_etime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/spn_emp"
+                    android:layout_weight="50">
+
+                    <EditText
+                        android:id="@+id/edt_etime"
+                        style="@style/Edittext"
+                        android:editable="false"
+                        android:hint="End Time *"
+                        android:text=" "
+                        android:textSize="@dimen/text_13" />
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spn_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_timiing" />
+
+            <Spinner
+                android:id="@+id/spn_priority"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spn_status" />
+
+            <Spinner
+                android:id="@+id/spn_freq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spn_priority" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_edt_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spn_freq">
+
+                <EditText
+                    android:id="@+id/edt_note"
+                    style="@style/Edittext"
+                    android:layout_height="100dp"
+                    android:hint="Notes"
+                    android:text=""
+                    android:gravity="top"
+                    android:textSize="@dimen/text_13" />
+
+            </android.support.design.widget.TextInputLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

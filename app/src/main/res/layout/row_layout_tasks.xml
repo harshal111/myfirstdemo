@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_10dp">
+
+        <TextView
+            android:id="@+id/row_txt_task_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textStyle="bold"
+
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_15" />
+
+        <TextView
+            android:id="@+id/row_txt_area_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/row_txt_task_name"
+            android:text="Name"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_13" />
+
+        <TextView
+            android:id="@+id/row_txt_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/row_txt_task_name"
+            android:layout_marginLeft="@dimen/margin_5dp"
+            android:layout_toRightOf="@+id/row_txt_area_code"
+            android:text="Name"
+            android:textColor="@color/color_gray"
+            android:textSize="@dimen/text_13" />
+
+        <TextView
+            android:id="@+id/row_txt_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/row_txt_area"
+            android:text="Name"
+            android:textColor="@color/color_gray"
+            android:textSize="@dimen/text_13" />
+
+        <TextView
+            android:id="@+id/row_txt_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="Name"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_13" />
+
+    </RelativeLayout>
+</RelativeLayout>
